@@ -92,7 +92,12 @@ group by EXTRACT(YEAR_MONTH  FROM p.payment_date)
 ORDER BY Месяц   DESC  
 LIMIT 1;
 
-
+SELECT CAST( EXTRACT(YEAR_MONTH  FROM p.payment_date) AS CHAR) AS Месяц,
+(SUM(p.amount)) AS Сумма_в_месяц, COUNT((p.rental_id)) AS Колво 
+FROM payment p 
+group by Месяц
+ORDER BY Сумма_в_месяц   DESC  
+LIMIT 1;
 
 
 
