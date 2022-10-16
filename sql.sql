@@ -100,6 +100,18 @@ ORDER BY Сумма_в_месяц   DESC
 LIMIT 1;
 
 
+SELECT CONCAT(s.first_name, ' ' ,s.last_name) AS  ФИО,
+ SUM(p.amount) as Выручка ,
+CASE
+	WHEN SUM(p.amount) > 8000 THEN 'ДА'
+	WHEN SUM(amount) < 8000 THEN 'НЕТ'
+END AS Премия
+FROM payment p 
+JOIN staff s ON s.staff_id = p.staff_id 
+GROUP BY ФИО
+ORDER BY Выручка DESC
+;
+
 
 
 
