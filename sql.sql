@@ -112,7 +112,18 @@ GROUP BY ФИО
 ORDER BY Выручка DESC
 ;
 
-
+SELECT CONCAT(s.first_name, ' ' ,s.last_name) AS  ФИО,
+ COUNT(p.amount) as Выручка ,
+CASE
+	WHEN COUNT(p.amount) > 8000 THEN 'ДА'
+	WHEN COUNT(p.amount) < 8000 THEN 'НЕТ'
+END AS Премия
+FROM payment p 
+JOIN staff s ON s.staff_id = p.staff_id 
+WHERE p.amount > 0
+GROUP BY ФИО
+ORDER BY Выручка DESC
+;
 
 
 
