@@ -77,6 +77,12 @@ HAVING Число_Покупателей > 300
 ;
 
 
+SELECT  COUNT(f.`length`) AS Число_фильмов
+FROM film f 
+WHERE    f.length  >  (SELECT AVG( f2.`length`)  FROM film f2) 
+;
+
+
 
 
 
