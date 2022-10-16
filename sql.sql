@@ -86,7 +86,11 @@ WHERE    f.length  >  (SELECT AVG( f2.`length`)  FROM film f2)
 
 
 
-
+SELECT  (SUM(p.amount)) AS Месяц
+FROM payment p 
+group by EXTRACT(YEAR_MONTH  FROM p.payment_date)
+ORDER BY Месяц   DESC  
+LIMIT 1;
 
 
 
